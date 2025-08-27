@@ -132,6 +132,24 @@ class TrendCollectionViewCell: UICollectionViewCell {
         img.clipsToBounds = true
         return img
     }()
+    let alert : UIActivityIndicatorView = {
+        let loadingIndicator = UIActivityIndicatorView()
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.color = .black
+        loadingIndicator.style = .medium
+        loadingIndicator.translatesAutoresizingMaskIntoConstraints = false
+        loadingIndicator.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        loadingIndicator.widthAnchor.constraint(equalToConstant: 50).isActive = true
+          return loadingIndicator
+    }()
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        contentView.addSubview(alert)
+        alert.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+        alert.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+//
+        // Initialization code
+    }
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.layer.cornerRadius = 10 // Set the corner radius of the content view (optional)
@@ -159,8 +177,17 @@ class TrendCollectionViewCell: UICollectionViewCell {
         subTitle.text = model.idDrink
         imageTitle.text = model.strDrink
         let url : URL = URL.init(string: model.strDrinkThumb)!
+        alert.startAnimating();
 
-        posterImageView.sd_setImage(with: url, completed: nil)
+        service.shared.downloadImage(from: model.strDrinkThumb) { image, data, error in
+            DispatchQueue.main.async {
+                self.posterImageView.image = image
+                self.alert.stopAnimating();
+
+            }
+        }
+
+//        posterImageView.sd_setImage(with: url, completed: nil)
     }
     public func configure(with model: String) {
         posterImageView.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingRight: 0, height: 180)

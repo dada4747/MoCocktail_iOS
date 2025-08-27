@@ -186,6 +186,8 @@ class SignInVC: MCScrollVC {
     
     @objc func handleSignIn() {
         print("signInEnabled")
+        let root = MainTabBarVC()
+        navigationController?.pushViewController(root, animated: true)
     }
     @objc func handleGoogleSignIn(){
         print("google in clicked")

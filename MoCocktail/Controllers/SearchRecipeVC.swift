@@ -215,8 +215,15 @@ class RecipeCell: UICollectionViewCell {
     func setData(viewModel: Recipe){
         subTitle.text = viewModel.idDrink
         imageTitle.text = viewModel.strDrink
-        let url : URL = URL.init(string: viewModel.strDrinkThumb!)!
-        posterImageView.sd_setImage(with: url, completed: nil)
+//        let url : URL = URL.init(string: viewModel.strDrinkThumb!)!
+//        posterImageView.sd_setImage(with: url, completed: nil)
+        service.shared.downloadImage(from: viewModel.strDrinkThumb!) { image, data, error in
+           DispatchQueue.main.async {
+               self.posterImageView.image = image
+//               self.alert.stopAnimating();
+
+           }
+       }
         
     }
     func configure() {

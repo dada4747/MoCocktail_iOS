@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,8 +18,6 @@
 		840466D628A2E50C00A0CCA3 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 840466D528A2E50C00A0CCA3 /* Poppins-Regular.ttf */; };
 		842C4DCC28A6C40100412597 /* OnboardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C4DCB28A6C40100412597 /* OnboardingVC.swift */; };
 		845E585E28D1EBD6007B86A2 /* PopularCreatorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845E585D28D1EBD6007B86A2 /* PopularCreatorTableViewCell.swift */; };
-		845E586628D2DBC8007B86A2 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 845E586528D2DBC8007B86A2 /* SDWebImage */; };
-		845E586828D2DBC8007B86A2 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 845E586728D2DBC8007B86A2 /* SDWebImageMapKit */; };
 		845EB02428F083530021033D /* SearchedRecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845EB02328F083530021033D /* SearchedRecipeViewModel.swift */; };
 		845EB02628F09A970021033D /* RecipeDetaisVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845EB02528F09A970021033D /* RecipeDetaisVC.swift */; };
 		845EE52328DCC4300072EE58 /* TrendingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845EE52228DCC4300072EE58 /* TrendingViewModel.swift */; };
@@ -147,8 +145,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				845E586828D2DBC8007B86A2 /* SDWebImageMapKit in Frameworks */,
-				845E586628D2DBC8007B86A2 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,8 +383,6 @@
 			);
 			name = MoCocktail;
 			packageProductDependencies = (
-				845E586528D2DBC8007B86A2 /* SDWebImage */,
-				845E586728D2DBC8007B86A2 /* SDWebImageMapKit */,
 			);
 			productName = MoCocktail;
 			productReference = 840466B628A2B04300A0CCA3 /* MoCocktail.app */;
@@ -418,7 +412,6 @@
 			);
 			mainGroup = 840466AD28A2B04300A0CCA3;
 			packageReferences = (
-				845E586428D2DBC8007B86A2 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = 840466B728A2B04300A0CCA3 /* Products */;
 			projectDirPath = "";
@@ -698,30 +691,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		845E586428D2DBC8007B86A2 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
-			requirement = {
-				kind = exactVersion;
-				version = 5.11.1;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		845E586528D2DBC8007B86A2 /* SDWebImage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 845E586428D2DBC8007B86A2 /* XCRemoteSwiftPackageReference "SDWebImage" */;
-			productName = SDWebImage;
-		};
-		845E586728D2DBC8007B86A2 /* SDWebImageMapKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 845E586428D2DBC8007B86A2 /* XCRemoteSwiftPackageReference "SDWebImage" */;
-			productName = SDWebImageMapKit;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		840466C228A2B04300A0CCA3 /* MoCocktail.xcdatamodeld */ = {

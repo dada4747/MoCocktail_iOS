@@ -16,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window                      = UIWindow(windowScene: windowScene)
-        let vc =  MainTabBarVC()//UINavigationController(rootViewController: MainTabBarVC())// SignInViewController())// OnboardingViewController())// OnboardingViewController()// 
+        let vc =  UINavigationController(rootViewController: OnboardingVC())// SignInViewController())// OnboardingViewController())// OnboardingViewController()// 
         window?.rootViewController  = vc
         
         window?.makeKeyAndVisible()
@@ -40,4 +40,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
 }
+
 

@@ -241,6 +241,16 @@ class PopularCell: UICollectionViewCell {
 //        img.layer.shadowRadius = 45
         return img
     }()
+    let alert : UIActivityIndicatorView = {
+        let loadingIndicator = UIActivityIndicatorView()
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.color = .black
+        loadingIndicator.style = .medium
+        loadingIndicator.translatesAutoresizingMaskIntoConstraints = false
+        loadingIndicator.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        loadingIndicator.widthAnchor.constraint(equalToConstant: 50).isActive = true
+          return loadingIndicator
+    }()
     let subTitle = MCBodyLabel(font: AppFonts.smallRegular!, textAlignment: .left, text: "20 min")
     
     let imageTitle = MCBodyLabel(font: AppFonts.normalBold!, textAlignment: .left, text: "Popular collection view cell")
@@ -252,15 +262,31 @@ class PopularCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError()
     }
-    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        contentView.addSubview(alert)
+        alert.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+        alert.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+//
+        // Initialization code
+    }
     override func layoutSubviews() {
         super.layoutSubviews()
     }
     func setData(model: Drink){
-        let url : URL = URL.init(string: model.strDrinkThumb)!
-        imgview.sd_setImage(with: url, completed: nil)
+//        let url : URL = URL.init(string: model.strDrinkThumb)!
+//        imgview.sd_setImage(with: url, completed: nil)
         imageTitle.text = model.strDrink
         subTitle.text = model.idDrink
+        alert.startAnimating();
+
+         service.shared.downloadImage(from: model.strDrinkThumb) { image, data, error in
+            DispatchQueue.main.async {
+                self.imgview.image = image
+                self.alert.stopAnimating();
+
+            }
+        }
     }
     
     func configure() {

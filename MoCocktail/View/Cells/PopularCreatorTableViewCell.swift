@@ -133,8 +133,15 @@ class CreatorCell: UICollectionViewCell {
     func setData(viewModel: Drink){
 //        subTitle.text = viewModel.idDrink
         imageTitle.text = viewModel.strDrink
-        let url : URL = URL.init(string: viewModel.strDrinkThumb)!
-        imgview.sd_setImage(with: url, completed: nil)
+//        let url : URL = URL.init(string: viewModel.strDrinkThumb)!
+//        imgview.sd_setImage(with: url, completed: nil)
+        service.shared.downloadImage(from: viewModel.strDrinkThumb) { image, data, error in
+           DispatchQueue.main.async {
+               self.imgview.image = image
+//               self.alert.stopAnimating();
+
+           }
+       }
         
     }
     
